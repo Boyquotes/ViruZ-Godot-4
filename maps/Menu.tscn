@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bjpmdprpasbn4"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 179.0
+offset_top = 233.0
+offset_right = 429.0
+offset_bottom = 283.0
+text = "Un Jugador"

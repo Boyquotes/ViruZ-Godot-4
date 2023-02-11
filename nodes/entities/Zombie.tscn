@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://y36q55ubfwue"]
+
+[ext_resource type="Texture2D" uid="uid://4sdky2wxdg4d" path="res://textures/gui/bars/under_01.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://boop2wda13l33" path="res://textures/gui/bars/progress_01.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://fuqxejotj20w" path="res://textures/gui/bars/over_01.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cw1rmljrkf18f" path="res://textures/entity/z.png" id="4"]
+[ext_resource type="Script" path="res://-scripts/entities/enemy.gd" id="5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iixk2"]
+radius = 3.0
+height = 14.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 256
+collision_mask = 279
+script = ExtResource("5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 3
+position = Vector2(0, -10)
+texture = ExtResource("4")
+
+[node name="Vision" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+collision_mask = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -9.0
+offset_top = -24.0
+offset_right = 82.0
+offset_bottom = 16.0
+scale = Vector2(0.2, 0.2)
+texture_under = ExtResource("1")
+texture_over = ExtResource("3")
+texture_progress = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_iixk2")

@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="User" type="HBoxContainer"]
+offset_right = 177.0
+offset_bottom = 32.0
+
+[node name="Avatar" type="TextureRect" parent="."]
+offset_right = 32.0
+offset_bottom = 32.0
+minimum_size = Vector2( 32, 32 )
+
+[node name="Name" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 9.0
+offset_right = 80.0
+offset_bottom = 23.0
+text = "asdasd"
+align = 2

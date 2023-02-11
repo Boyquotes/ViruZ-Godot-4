@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cenkg2r258ae5"]
+
+[ext_resource type="Texture2D" uid="uid://4sdky2wxdg4d" path="res://textures/gui/bars/under_01.png" id="1_2h4lr"]
+[ext_resource type="Script" path="res://-scripts/gui/LoadScreen.gd" id="1_28k2w"]
+[ext_resource type="Texture2D" uid="uid://fuqxejotj20w" path="res://textures/gui/bars/over_01.png" id="2_tf6bs"]
+[ext_resource type="Texture2D" uid="uid://dhkqi3m5fcwfq" path="res://textures/gui/bars/progress_02.png" id="3_6nyum"]
+
+[node name="LoadScreen" type="CanvasLayer"]
+script = ExtResource("1_28k2w")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = ExtResource("1_2h4lr")
+texture_over = ExtResource("2_tf6bs")
+texture_progress = ExtResource("3_6nyum")

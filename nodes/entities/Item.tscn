@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b05gbyiqbqiji"]
+
+[ext_resource type="Script" path="res://-scripts/classes/ItemDroped.gd" id="1_u816j"]
+[ext_resource type="Resource" uid="uid://drde48lhunw8y" path="res://items/hat.tres" id="2_rjw24"]
+[ext_resource type="Texture2D" uid="uid://j2o4meqlfmem" path="res://textures/gui/icons/pick_item.png" id="3_3jplb"]
+[ext_resource type="Texture2D" uid="uid://ddsd4ekhlprav" path="res://textures/items/hat.png" id="4_3hrha"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 8.0
+
+[node name="hast" type="Area2D"]
+visibility_layer = 16
+collision_layer = 2147487744
+collision_mask = 2147487744
+script = ExtResource("1_u816j")
+item = ExtResource("2_rjw24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("1")
+debug_color = Color(0.329412, 0.878431, 1, 0.419608)
+
+[node name="KeyIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -19)
+texture = ExtResource("3_3jplb")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+light_mask = 3
+position = Vector2(0, -6)
+texture = ExtResource("4_3hrha")

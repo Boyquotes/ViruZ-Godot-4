@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://textures/gui/bars/under_01.png" type="Texture2D" id=1]
+[ext_resource path="res://textures/gui/bars/over_01.png" type="Texture2D" id=2]
+[ext_resource path="res://textures/gui/icons/Stamina.png" type="Texture2D" id=3]
+[ext_resource path="res://textures/gui/bars/progress_02.png" type="Texture2D" id=4]
+
+[node name="Staminabar" type="HBoxContainer"]
+offset_right = 91.0
+offset_bottom = 14.0
+scale = Vector2( 2, 2 )
+mouse_filter = 2
+
+[node name="Stamina" type="TextureRect" parent="."]
+offset_right = 12.0
+offset_bottom = 14.0
+minimum_size = Vector2( 12, 12 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Progress" type="TextureProgressBar" parent="."]
+offset_left = 16.0
+offset_right = 107.0
+offset_bottom = 14.0
+texture_under = ExtResource( 1 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 4 )

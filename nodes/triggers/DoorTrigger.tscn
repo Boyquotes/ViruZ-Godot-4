@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxut7hoa45twa"]
+
+[ext_resource type="Script" path="res://-scripts/triggers/DoorTrigger.gd" id="1_jy4go"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyin7"]
+size = Vector2(30, 30)
+
+[node name="DoorTrigger" type="Area2D"]
+collision_layer = 2048
+collision_mask = 2048
+script = ExtResource("1_jy4go")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qyin7")

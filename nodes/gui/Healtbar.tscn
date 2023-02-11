@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf0wo61heudh4"]
+
+[ext_resource type="Texture2D" uid="uid://4sdky2wxdg4d" path="res://textures/gui/bars/under_01.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://fuqxejotj20w" path="res://textures/gui/bars/over_01.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://boop2wda13l33" path="res://textures/gui/bars/progress_01.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://1m0uiykjsrfs" path="res://textures/gui/icons/Healt.png" id="4"]
+
+[node name="Healtbar" type="HBoxContainer"]
+offset_right = 102.0
+offset_bottom = 12.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="."]
+offset_right = 7.0
+offset_bottom = 12.0
+texture = ExtResource("4")
+
+[node name="Progress" type="TextureProgressBar" parent="."]
+offset_left = 11.0
+offset_right = 102.0
+offset_bottom = 12.0
+texture_under = ExtResource("1")
+texture_over = ExtResource("2")
+texture_progress = ExtResource("3")

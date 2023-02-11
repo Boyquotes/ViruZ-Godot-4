@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://diir5wvqpyv2s"]
+
+[ext_resource type="Texture2D" uid="uid://cq1dwib2a641s" path="res://textures/gui/container/slot.png" id="1_851qs"]
+[ext_resource type="PackedScene" uid="uid://eurdokuwe0qu" path="res://nodes/gui/ItemUI.tscn" id="2_0kwki"]
+[ext_resource type="Script" path="res://scripts/classes/slot.gd" id="2_nwmv3"]
+
+[node name="Slot" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_851qs")
+script = ExtResource("2_nwmv3")
+
+[node name="ItemUI" parent="." instance=ExtResource("2_0kwki")]
+layout_mode = 1
