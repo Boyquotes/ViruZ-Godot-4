@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://dd8vthj7kddfc"]
+[gd_scene load_steps=18 format=3 uid="uid://dd8vthj7kddfc"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_m8fv7"]
 [ext_resource type="Script" path="res://scripts/player/player_state_machine.gd" id="2_7fhln"]
+[ext_resource type="Resource" uid="uid://cfauc8uwxf561" path="res://characters/player.tres" id="2_8j5ap"]
 [ext_resource type="Script" path="res://scripts/player/states/idle.gd" id="3_kwofa"]
 [ext_resource type="Script" path="res://scripts/player/states/walk.gd" id="3_oq8hy"]
+[ext_resource type="Script" path="res://skin_manager.gd" id="3_w4s0a"]
+[ext_resource type="Texture2D" uid="uid://dwgu77exioqfc" path="res://idle1.png" id="4_0onna"]
+[ext_resource type="Texture2D" uid="uid://bfxjgfn7i0cjr" path="res://ski_test.png" id="4_4ogqw"]
 [ext_resource type="Script" path="res://scripts/gui/ui.gd" id="4_n8bkh"]
+[ext_resource type="Texture2D" uid="uid://bvrmouxo36xhm" path="res://map.png" id="5_lypbj"]
 [ext_resource type="PackedScene" uid="uid://bf0wo61heudh4" path="res://nodes/gui/Healtbar.tscn" id="5_p4vlb"]
 [ext_resource type="PackedScene" path="res://nodes/gui/Staminabar.tscn" id="6_vpekh"]
 [ext_resource type="PackedScene" uid="uid://b57yx16vt5r1i" path="res://nodes/gui/Inventory.tscn" id="7_0riuf"]
@@ -27,6 +32,17 @@ material = SubResource("ShaderMaterial_tp0c6")
 collision_layer = 15
 collision_mask = 15
 script = ExtResource("1_m8fv7")
+character = ExtResource("2_8j5ap")
+
+[node name="Skin" type="Node2D" parent="."]
+script = ExtResource("3_w4s0a")
+skin = ExtResource("4_4ogqw")
+map = ExtResource("5_lypbj")
+new_color = Color(0.54902, 0.203922, 0.180392, 1)
+
+[node name="Body" type="Sprite2D" parent="Skin"]
+position = Vector2(0, -10)
+texture = ExtResource("4_0onna")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_7fhln")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=2 format=3 uid="uid://cfauc8uwxf561"]
+
+[ext_resource type="Script" path="res://scripts/classes/character.gd" id="1_vhlyx"]
+
+[resource]
+script = ExtResource("1_vhlyx")
+health = 100.0
+stamina = 200.0
+inventory_size = 18
+inventory_equipment_size = 4

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4g3p3lv4o11e"]
+
+[ext_resource type="Script" path="res://scripts/classes/entity.gd" id="1_588nw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uwufa"]
+
+[node name="EntityClass" type="CharacterBody2D"]
+script = ExtResource("1_588nw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_uwufa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

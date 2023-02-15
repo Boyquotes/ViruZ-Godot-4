@@ -4,25 +4,21 @@ class_name CharacterClass
 #CharacterClass es la clase de cada personaje del juego
 #Se controla cada acción que hace el personaje
 
-signal desequip_item(item, slot)            #Señal de que se desequipo un item de su slot correspondiente
-signal equip_item(item, slot)         #Señal de que se equipo un item en su slot correspondiente
-signal drop_item(item, slot)          #Señal de que dropeo un item
+signal desequip_item(item, slot)
+signal equip_item(item, slot)
+signal drop_item(item, slot)
 
-@export_category("Atributos")
-@export var health : float                #Variable de vida maxima
-@export var stamina : float               #Variable de estamina
-@export var inventory_size : int = 18     #Slots que tendra el inventario
+@export_category("Atributos") 
+@export var health : float = 100
+@export var stamina : float = 200
+@export var inventory_size : int = 18
 @export var inventory_equipment_size = 4
 
-var inventory : InventoryClass      #Variable donde se guarda todo el inventario
-var item_primary : ItemClass
-var item_secondary : ItemClass
+var inventory : InventoryClass
+var item_primary_hand : ItemClass
+var item_secondary_hand : ItemClass
 var entity : EntityClass
 
-func set_entity(_entity : EntityClass):
-	_entity.health = health
-	_entity.stamina = stamina
-	inventory = InventoryClass.new(inventory_size, inventory_equipment_size, self)
 
 #Se le pasa a new_health el valor a añadir a la vida del personaje
 func addHealth(new_health : float):

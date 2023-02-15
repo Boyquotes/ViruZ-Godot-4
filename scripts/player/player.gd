@@ -8,41 +8,25 @@ var input_vector = Vector2.ZERO
 var items_in_range : Dictionary
 var interactuables_in_range : Dictionary
 
-var health
-var stamina
-
-## Character of the player.
 @export var character : CharacterClass
 
-@onready var inventory_panel = %Inventory      #Referencia al nodo control Inventario
+@onready var inventory_panel : InventoryHUD = %Inventory      #Referencia al nodo control Inventario
 
 func _ready():
-	
 	Global.player = self
 	
-	#Se setean los datos de la clase CharacterClass
-#	character.set_player(self)
+#	character.set_entity(self)
 	
-	#Conexiones del Character al nodo player
-	#Se hacen todas las conecciones de señales a las funciones del nodo
-#	character.connect("desequip_item",Callable(self,"desequip_item"))
-#	character.connect("equip_item",Callable(self,"equip_item"))
-#	character.connect("drop_item",Callable(self,"drop_item"))
+#	inventory_panel.inventory = inventory
+#	inventory_panel.create_inventory()
+#
+	character.connect("desequip_item",Callable(self,"desequip_item"))
+	character.connect("equip_item",Callable(self,"equip_item"))
+	character.connect("drop_item",Callable(self,"drop_item"))
 #
 #	$InteractiveArea.connect("body_entered", Callable(self,"interactive_body_entered"))
 #	$InteractiveArea.connect("area_entered", Callable(self,"interactive_area_entered"))
 #	$InteractiveArea.connect("area_exited", Callable(self,"interactive_area_exited"))
-	
-	#Asigar inventarios y paneles
-#	inventory_panel.inventory = character.inventory
-	
-	#Se crea el inventario con los datos guardados en los archivos de usuario
-#	inventory_panel.create_inventory()
-#
-#	#Se hacen las conexiones a los nodos respectivos de cada panel
-#	inventory_panel.inventory.connect("item_changed",Callable(inventory_panel,"on_items_changed"))
-	
-	#Inicializador de la maquina de estados el cual recibe este mismo nodo y el cuerpo del player
 	
 
 func _input(event):

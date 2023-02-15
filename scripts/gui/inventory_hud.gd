@@ -1,4 +1,5 @@
 extends Control
+class_name InventoryHUD
 
 var inventory : InventoryClass
 var hotbar
