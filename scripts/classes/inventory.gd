@@ -1,78 +1,93 @@
 extends Resource
 class_name InventoryClass
 
-var drag_data := {
-	"origin_slot": null,
-	"data": null
-}
+signal item_changed(slot_data, item)
+signal size_changed(size)
 
-signal item_changed(index, item)
-
-var inventory_equipment_size : int
-
-var owner 
-var inventory_items := []
-var equipment_size : int
-
-func _init(inventory_size : int, inventory_equipment_size : int, _owner):
-	
-	var data := {
+var data := {
 		"item" : null,
-		"quantity": 0
+		"amount": 0,
+		"description": "",
+		"atributes": {}
 	}
-	
-	inventory_items.resize(inventory_size + inventory_equipment_size)
-	inventory_items.fill(data)
-	
-	equipment_size = inventory_equipment_size
-	
-	owner = _owner
-	
 
-func is_full() -> bool:
-	var full
-	for index in inventory_items.size() - equipment_size:
-		if inventory_items[index]["item"]:
-			full = true
-		else:
-			full = false
-	return full
+var inventory_items : Array[Dictionary]
+var equipment_items : Array[Dictionary]
+
+@export var owner : PhysicsBody2D
+
+@export var size : int :
+	set(value):
+		size = value
+		inventory_items.resize(size)
+		for i in inventory_items.size():
+			inventory_items[i] = {
+				"data" : {
+					"slot_type" : Global.SLOT_TYPE.default,
+					"slot_index" : i
+				},
+				"item": {}
+			}
+
+@export var equipment_size : int :
+	set(value):
+		equipment_size = value
+		equipment_items.resize(equipment_size)
+		for i in equipment_items.size():
+			equipment_items[i] = {
+				"data" : {
+					"slot_type" : (2 + i) / 2,
+					"slot_index" : i
+				},
+				"item": {}
+			}
+
+func _init(o):
+	owner = o
+	resource_local_to_scene = true
 
 func add_item(item : ItemClass):
-	for index in inventory_items.size() - equipment_size:
-		if inventory_items[index]["item"]:
-			continue
-		set_item(index, item)
-		break
+	for slot in inventory_items:
+		if slot.item == {}:
+			set_item(slot.data.slot_index, item)
+			return true
+	return false
+
+func set_item(index : int, item : ItemClass, amount : int = 1):
+	var item_data := data.duplicate()
 	
+	item_data["item"] = item
+	item_data["amount"] = amount
+	item_data["description"] = item.description
+	inventory_items[index].item = item_data
+	
+	emit_signal("item_changed", inventory_items[index].data, item_data)
 
-func set_item(slot : int, item : ItemClass, quantity : int = 1):
-	var data = {
-		"item": item,
-		"quantity": quantity
-	}
-	inventory_items[slot] = data
-	emit_signal("item_changed", slot, data)
+func set_equipment_item(index : int, item : ItemClass, amount : int = 1):
+	var item_data := data.duplicate()
+	
+	item_data["item"] = item
+	item_data["amount"] = amount
+	item_data["description"] = item.description
+	
+	item.equip_item(owner, equipment_items[index].data.slot_type)
+	
+	equipment_items[index].item = item_data
+	
+	emit_signal("item_changed", equipment_items[index].data, item_data)
 
-func remove_item(index : int, quantity : int = 0):
+func remove_item(index : int):
 	var previousItem = inventory_items[index]
-	var data = {
-		"item": null,
-		"quantity": quantity
-	}
-	inventory_items[index] = data
-	emit_signal("item_changed", index, inventory_items[index])
+	
+	inventory_items[index].item = {}
+	
+	emit_signal("item_changed", inventory_items[index].data, inventory_items[index].item)
 	return previousItem
 
-func add_quantity(index : int, quantity : int):
-	if inventory_items[index]["quantity"] < inventory_items[index]["item"].max_stack_size:
-		inventory_items[index]["quantity"] += quantity
-	else:
-		add_item(inventory_items[index]["item"])
-	emit_signal("item_changed", index, inventory_items[index])
-
-func remove_quantity(index : int, quantity : int):
-	inventory_items[index]["quantity"] -= quantity
-	if inventory_items[index]["quantity"] <= 0:
-		remove_item(index)
-	emit_signal("item_changed", index, inventory_items[index])
+func remove_equipment(index : int):
+	var previousItem = inventory_items[index]
+	
+	equipment_items[index].item = {}
+	
+	emit_signal("item_changed", equipment_items[index].data, equipment_items[index].item)
+	return previousItem

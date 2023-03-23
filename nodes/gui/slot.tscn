@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://diir5wvqpyv2s"]
+[gd_scene load_steps=4 format=3 uid="uid://cjucvm0ipbpqu"]
 
-[ext_resource type="Texture2D" uid="uid://cq1dwib2a641s" path="res://textures/gui/container/slot.png" id="1_851qs"]
-[ext_resource type="PackedScene" uid="uid://eurdokuwe0qu" path="res://nodes/gui/ItemUI.tscn" id="2_0kwki"]
-[ext_resource type="Script" path="res://scripts/classes/slot.gd" id="2_nwmv3"]
+[ext_resource type="Texture2D" uid="uid://bu4weohu8i8yj" path="res://textures/gui/slot.png" id="1_htrmk"]
+[ext_resource type="Script" path="res://scripts/gui/slot.gd" id="2_yic8c"]
+[ext_resource type="PackedScene" uid="uid://eurdokuwe0qu" path="res://nodes/gui/item_display.tscn" id="3_eissp"]
 
 [node name="Slot" type="TextureRect"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_851qs")
-script = ExtResource("2_nwmv3")
+offset_bottom = 7.0
+texture = ExtResource("1_htrmk")
+stretch_mode = 2
+script = ExtResource("2_yic8c")
 
-[node name="ItemUI" parent="." instance=ExtResource("2_0kwki")]
-layout_mode = 1
+[node name="ItemDisplay" parent="." instance=ExtResource("3_eissp")]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_top = 27.0
+offset_right = 115.0
+offset_bottom = 50.0

@@ -1,56 +1,121 @@
-[gd_scene load_steps=3 format=3 uid="uid://b57yx16vt5r1i"]
+[gd_scene load_steps=5 format=3 uid="uid://b57yx16vt5r1i"]
 
-[ext_resource type="Texture2D" uid="uid://c076npa7ugrne" path="res://textures/gui/container/generic_background.png" id="1_nmbfb"]
-[ext_resource type="Script" path="res://scripts/gui/inventory_hud.gd" id="2_olp2a"]
+[ext_resource type="Texture2D" uid="uid://c85jym1m6qlyw" path="res://textures/gui/tab_unselected.png" id="2_iud71"]
+[ext_resource type="Script" path="res://scripts/gui/inventory_hud.gd" id="2_pd837"]
+[ext_resource type="Texture2D" uid="uid://cb15xwg2ky0eq" path="res://textures/gui/container/inventory_container.png" id="2_u4ujj"]
+[ext_resource type="Texture2D" uid="uid://d36yqdltxky0" path="res://textures/gui/tab_selected.png" id="3_6unge"]
 
-[node name="Inventory" type="TextureRect"]
+[node name="Inventory" type="Control"]
+clip_contents = true
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1074.0
-offset_bottom = -579.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(39, 34)
-texture = ExtResource("1_nmbfb")
-script = ExtResource("2_olp2a")
+pivot_offset = Vector2(0, 648)
+size_flags_vertical = 8
+script = ExtResource("2_pd837")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="HotbarSlotsContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(58, 18)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryContainer" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+offset_right = 257.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 110)
+texture = ExtResource("2_u4ujj")
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="InventoryContainer"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = -5.0
-offset_top = -9.0
-offset_right = 95.0
-offset_bottom = 51.0
+offset_left = 133.0
+offset_top = -17.0
+offset_right = 173.0
+offset_bottom = 3.0
+theme_override_constants/separation = 4
 
-[node name="SlotContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="InventoryButton" type="TextureButton" parent="InventoryContainer/ButtonsContainer"]
+unique_name_in_owner = true
+z_index = -1
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_iud71")
+texture_pressed = ExtResource("3_6unge")
+
+[node name="BackpackButton" type="TextureButton" parent="InventoryContainer/ButtonsContainer"]
+unique_name_in_owner = true
+z_index = -1
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_iud71")
+texture_pressed = ExtResource("3_6unge")
+
+[node name="EquipmentSlotsContainer" type="GridContainer" parent="InventoryContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 9.0
+offset_top = 14.0
+offset_right = 119.0
+offset_bottom = 100.0
+size_flags_vertical = 8
+theme_override_constants/h_separation = 70
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="InventorySlotsContainer" type="GridContainer" parent="InventoryContainer"]
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
-theme_override_constants/h_separation = -1
-theme_override_constants/v_separation = -1
-columns = 5
-
-[node name="ItemHands" type="GridContainer" parent="."]
-unique_name_in_owner = true
-clip_contents = true
-layout_mode = 0
-offset_left = 15.0
-offset_top = 53.0
-offset_right = 91.0
-offset_bottom = 73.0
+offset_left = 136.0
+offset_top = 16.0
+offset_right = 222.0
+offset_bottom = 100.0
+size_flags_vertical = 8
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
-columns = 3
+columns = 4
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="Equipment" type="GridContainer" parent="."]
+[node name="BackpackSlotsContainer" type="GridContainer" parent="InventoryContainer"]
 unique_name_in_owner = true
+visible = false
 clip_contents = true
+layout_mode = 2
+offset_left = 136.0
+offset_top = 16.0
+offset_right = 222.0
+offset_bottom = 100.0
+size_flags_vertical = 8
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 4
+
+[node name="StorageContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = -37.0
-offset_top = -9.0
-offset_right = -12.0
-offset_bottom = 83.0
-theme_override_constants/h_separation = -1
-theme_override_constants/v_separation = -1
+offset_right = 18.0
+offset_bottom = 18.0
+theme_override_constants/separation = 10

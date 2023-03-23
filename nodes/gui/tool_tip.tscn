@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://3bhslcr4m5md"]
+
+[ext_resource type="Script" path="res://scripts/gui/tool_tip.gd" id="1_6wbn8"]
+[ext_resource type="Texture2D" uid="uid://dulbe4tgtc8eo" path="res://textures/gui/tool_tip.png" id="2_mrors"]
+
+[node name="ToolTip" type="MarginContainer"]
+offset_right = 277.0
+offset_bottom = 122.0
+script = ExtResource("1_6wbn8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_mrors")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "<Name>"
+horizontal_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Stat" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="stat1" type="Label" parent="MarginContainer/VBoxContainer/Stats/Stat"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "<stat>"
+
+[node name="stat2" type="Label" parent="MarginContainer/VBoxContainer/Stats/Stat"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "<stat>"
+
+[node name="description" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasdasdasdasdasdasdasdasdas"

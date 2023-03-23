@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemClass" load_steps=3 format=3 uid="uid://q2w8o17ax4r2"]
+
+[ext_resource type="Script" path="res://scripts/classes/item.gd" id="1_25kyd"]
+[ext_resource type="Texture2D" uid="uid://d2fxen8w1f8be" path="res://textures/item/school_backpack.png" id="2_awkhp"]
+
+[resource]
+script = ExtResource("1_25kyd")
+display_name = "Mochila"
+ID = "backpack"
+type = 3
+texture = ExtResource("2_awkhp")
+max_stack_size = 1
+description = ""
+equip_slot = 2
+contain_inventory = true
+inventory_size = 15

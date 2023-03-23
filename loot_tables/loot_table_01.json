@@ -1,0 +1,13 @@
+{
+	"items":[
+		{
+			"rolls" : 2,
+			"id": "hermeson_k4"
+		},
+		{
+			"roll_min" : 2,
+			"roll_max" : 5,
+			"id": "apple"
+		}
+	]
+}

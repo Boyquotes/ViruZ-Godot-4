@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemClass" load_steps=3 format=3 uid="uid://cp0yyj512pdk2"]
+
+[ext_resource type="Script" path="res://scripts/classes/item.gd" id="1_a820l"]
+[ext_resource type="Texture2D" uid="uid://4a4r46pr3oxa" path="res://textures/item/hermeson_k4.png" id="2_mesfr"]
+
+[resource]
+script = ExtResource("1_a820l")
+display_name = "Hermeson k4"
+ID = "hermeson_k4"
+type = 0
+texture = ExtResource("2_mesfr")
+max_stack_size = 1
+description = ""

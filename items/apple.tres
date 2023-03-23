@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemClass" load_steps=3 format=3 uid="uid://dfj3uxn7tpkit"]
+
+[ext_resource type="Script" path="res://scripts/classes/item.gd" id="1_ifm1u"]
+[ext_resource type="Texture2D" uid="uid://bh4scynod4e7a" path="res://textures/item/apple.png" id="2_fuqxn"]
+
+[resource]
+script = ExtResource("1_ifm1u")
+display_name = "Manzana"
+ID = "apple"
+type = 4
+texture = ExtResource("2_fuqxn")
+max_stack_size = 1
+description = "Una manzana"

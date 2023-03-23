@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgy1jwqqfbkbq"]
+
+[ext_resource type="PackedScene" uid="uid://do6ddil7xccb5" path="res://maps/map.tscn" id="1_qqv0j"]
+[ext_resource type="Script" path="res://world.gd" id="1_xoyxo"]
+[ext_resource type="PackedScene" uid="uid://cl7ncfv5rt5yc" path="res://nodes/entities/item_entity.tscn" id="3_rmfmc"]
+[ext_resource type="Resource" uid="uid://q2w8o17ax4r2" path="res://items/backpack.tres" id="5_iyufr"]
+[ext_resource type="PackedScene" uid="uid://ct57stvl56hrr" path="res://nodes/player.tscn" id="5_o8caa"]
+[ext_resource type="PackedScene" uid="uid://ciruf4i7qhyfq" path="res://zombie.tscn" id="6_ef06f"]
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_xoyxo")
+
+[node name="Player" parent="." instance=ExtResource("5_o8caa")]
+position = Vector2(153, 53)
+
+[node name="Mochila__1" parent="." instance=ExtResource("3_rmfmc")]
+position = Vector2(100, 73)
+item = ExtResource("5_iyufr")
+
+[node name="Zombie" parent="." instance=ExtResource("6_ef06f")]
+position = Vector2(106, 108)
+
+[node name="TileMap" parent="." instance=ExtResource("1_qqv0j")]
